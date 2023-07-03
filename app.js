@@ -67,8 +67,9 @@ let AddToCart = (event) => {
     console.log("Price : ", event.closest(".card-body").querySelector("#Q").dataset.price)
     console.log("Quantities : ", event.closest(".card-body").querySelector("#P").dataset.quantities)
 
-    let pId = event.closest(".card-body").dataset.productid;
+    let pId = event.closest(".card-body").dataset.productid;   
     let pTitle = event.closest(".card-body").querySelector(".card-title").textContent;
+
     let pPrice = Number(event.closest(".card-body").querySelector("#Q").dataset.price);
     let pQuantities = Number(event.closest(".card-body").querySelector("#P").dataset.quantities);
 
@@ -127,12 +128,12 @@ const displayProduct = (item) => {
   productCards.innerHTML += `
   <div class="col-4">
         <div class="card">
-      <img id="img" value="/images/${item.img_source}"
+      <img id="img" data-productImage="/images/${item.img_source}"
         src="/images/${item.img_source}" 
         class="card-img-top"
         alt="..."
       />
-      <div class="card-body" value="${item.id}" data-productid=${item.id}>
+      <div class="card-body" data-productid=${item.id}>
         <h5 id="name" data-name="${item.product_name}" class="card-title">${item.product_name}</h5>
         <p id="description" class="card-text">
         ${item.product_description}
