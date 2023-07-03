@@ -11,8 +11,8 @@ let totalPriceCalc = document.querySelector(".total-price")
 let cartProductImage = document.querySelector("#img");
 let cartProductName = document.querySelector("#name");
 let cartProductDescription = document.querySelector("#description");
-let cartProductPrice = document.querySelector("#P");
-let cartProductQuantity = document.querySelector("#Q");
+//let cartProductPrice = document.querySelector("#price");
+//let cartProductQuantity = document.querySelector("#quantity");
 
 let allProduct = ""
 let createItem = function(item) {
@@ -64,20 +64,23 @@ let AddToCart = (event) => {
 
       
     console.log("Product name : ", event.closest(".card-body").querySelector(".card-title").textContent)
-    console.log("Price : ", event.closest(".card-body").querySelector("#Q").dataset.price)
-    console.log("Quantities : ", event.closest(".card-body").querySelector("#P").dataset.quantities)
+    console.log("Price : ", event.closest(".card-body").querySelector("#price").dataset.price)
+    console.log("Quantities : ", event.closest(".card-body").querySelector("#quantity").dataset.quantities)
 
-    let pId = event.closest(".card-body").dataset.productid;    
+    let pId = event.closest(".card-body").dataset.productid;
+    let pImage = event.closest(".card").querySelector("#img").dataset.productimg;
+    console.log("🚀 ~ file: app.js:72 ~ AddToCart ~ pImage:", pImage)
     let pTitle = event.closest(".card-body").querySelector(".card-title").textContent;
 
-    let pPrice = Number(event.closest(".card-body").querySelector("#Q").dataset.price);
-    let pQuantities = Number(event.closest(".card-body").querySelector("#P").dataset.quantities);
+    let pPrice = Number(event.closest(".card-body").querySelector("#price").dataset.price);
+    let pQuantities = Number(event.closest(".card-body").querySelector("#quantity").dataset.quantities);
 
     totalPrice += pPrice
 
     
 
     let productToCart = `<div>
+    <img src="/images/${pImage}">
     <h2>${pTitle}</h2>
     <p>Price: <span class="cart-p-price">${pPrice}</span></p>
     <p>Quantities : ${pQuantities}</p>
@@ -128,7 +131,7 @@ const displayProduct = (item) => {
   productCards.innerHTML += `
   <div class="col-4">
         <div class="card">
-      <img id="img" data-productImage="/images/${item.img_source}"
+      <img id="img" data-productimg="${item.img_source}"
         src="/images/${item.img_source}" 
         class="card-img-top"
         alt="..."
@@ -138,9 +141,9 @@ const displayProduct = (item) => {
         <p id="description" class="card-text">
         ${item.product_description}
         </p>
-        <p id="Q" class="card-text" data-price="${item.prices}">Price : ${item.prices}
+        <p id="price" class="card-text" data-price="${item.prices}">Price : ${item.prices}
         </p>
-        <p id="P" class="card-text" data-quantities="${item.quantities}">Quantity : ${item.quantities}
+        <p id="quantity" class="card-text" data-quantities="${item.quantities}">Quantity : ${item.quantities}
         </p>
         <button class="btn btn-primary" onclick="AddToCart(this, ${item.id})">Add to Cart</button>
        </div>
