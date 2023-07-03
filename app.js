@@ -67,7 +67,7 @@ let AddToCart = (event) => {
     console.log("Price : ", event.closest(".card-body").querySelector("#Q").dataset.price)
     console.log("Quantities : ", event.closest(".card-body").querySelector("#P").dataset.quantities)
 
-    let pId = event.closest(".card-body").dataset.productid;   
+    let pId = event.closest(".card-body").dataset.productid;    
     let pTitle = event.closest(".card-body").querySelector(".card-title").textContent;
 
     let pPrice = Number(event.closest(".card-body").querySelector("#Q").dataset.price);
